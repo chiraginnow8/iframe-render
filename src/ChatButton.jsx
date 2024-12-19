@@ -11,7 +11,7 @@ export default function ChatButton() {
   const handleMouseOut = () => {
     console.log("Collapse")
     window.parent.postMessage({ 
-        width: `100px`,
+        width: `60px`,
         }, '*'); // Notify parent to collapse iframe
   };
 
@@ -21,7 +21,6 @@ export default function ChatButton() {
       onMouseOver={handleMouseOver}
       onMouseOut={handleMouseOut}
     >
-      <div style={buttonStyles.text}>Let&apos;s have a chat</div>
       <button style={buttonStyles.button}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -34,6 +33,7 @@ export default function ChatButton() {
           />
         </svg>
       </button>
+      <div style={buttonStyles.text}>Let&apos;s have a chat</div>
     </div>
   );
 }
@@ -45,6 +45,7 @@ const buttonStyles = {
       display: "flex",
       alignItems: "center",
       gap: "0.5rem",
+      overflow: "hidden",
     },
     text: {
       backgroundColor: "#06b6d4", // Cyan-500

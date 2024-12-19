@@ -1,7 +1,44 @@
-import React from "react";
+'use client'
 
 export default function ChatButton() {
-  const buttonStyles = {
+  const handleMouseOver = () => {
+    console.log("Expand")
+    window.parent.postMessage({ 
+        width: `240px`,
+        }, '*'); // Notify parent to expand iframe
+  };
+
+  const handleMouseOut = () => {
+    console.log("Collapse")
+    window.parent.postMessage({ 
+        width: `100px`,
+        }, '*'); // Notify parent to collapse iframe
+  };
+
+  return (
+    <div
+      style={buttonStyles.container}
+      onMouseOver={handleMouseOver}
+      onMouseOut={handleMouseOut}
+    >
+      <div style={buttonStyles.text}>Let&apos;s have a chat</div>
+      <button style={buttonStyles.button}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          style={buttonStyles.icon}
+        >
+          <path
+            d="M21 15a2 2 0 0 0-2-2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10Z"
+            fill="currentColor"
+          />
+        </svg>
+      </button>
+    </div>
+  );
+}
+
+const buttonStyles = {
     container: {
       width: "fit-content",
       height: "fit-content",
@@ -37,21 +74,3 @@ export default function ChatButton() {
     },
   };
 
-  return (
-    <div style={buttonStyles.container}>
-      <div style={buttonStyles.text}>Let&apos;s have a chat</div>
-      <button style={buttonStyles.button}>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          style={buttonStyles.icon}
-        >
-          <path
-            d="M21 15a2 2 0 0 0-2-2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10Z"
-            fill="currentColor"
-          />
-        </svg>
-      </button>
-    </div>
-  );
-}
